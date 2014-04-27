@@ -13,10 +13,7 @@ public class TennisGame {
 
     public static void main(String[] args) {
         TennisGame game = new TennisGame("player1", "player2");
-        
-        System.out.println(game.getScore());
 
-        game.wonPoint("player1");
         System.out.println(game.getScore());
 
         game.wonPoint("player1");
@@ -28,10 +25,40 @@ public class TennisGame {
         game.wonPoint("player1");
         System.out.println(game.getScore());
 
+        game.wonPoint("player2");
+        System.out.println(game.getScore());
+
+        game.wonPoint("player1");
+        System.out.println(game.getScore());
+
+        game.wonPoint("player2");
+        System.out.println(game.getScore());
+
+        game.wonPoint("player1");
+        System.out.println(game.getScore());
+
+        game.wonPoint("player2");
+        System.out.println(game.getScore());
+
+        game.wonPoint("player1");
+        System.out.println(game.getScore());
+
+        game.wonPoint("player2");
+        System.out.println(game.getScore());
+        
+        game.wonPoint("player1");
+        System.out.println(game.getScore());
+
+        game.wonPoint("player2");
+        System.out.println(game.getScore());
+        
+        game.wonPoint("player1");
+        System.out.println(game.getScore());
+
         game.wonPoint("player1");
         System.out.println(game.getScore());
     }
-    
+
     public TennisGame(String player1Name, String player2Name) {
         this.player1Name = player1Name;
         this.player2Name = player2Name;
@@ -46,33 +73,38 @@ public class TennisGame {
     }
 
     private String getEvenScoreAsString() {
-        return evenScoreStrings[gameScoreP1];
+        if (gameScoreP1 < evenScoreStrings.length) {
+            return evenScoreStrings[gameScoreP1];
+        } else {
+            return evenScoreStrings[evenScoreStrings.length - 1];
+        }
+
     }
-    
+
     private int getDifferenceInScore() {
         return gameScoreP1 - gameScoreP2;
     }
-    
+
     private String getAdvantageOrWinAsString() {
         int differenceInScore = getDifferenceInScore();
-            if (differenceInScore == 1) {
-                return advantageOrWinStrings[0]; //advanatage p1
-            } else if (differenceInScore == -1) {
-                return advantageOrWinStrings[1]; // advantage p2
-            } else if (differenceInScore >= 2) {
-                return advantageOrWinStrings[2]; // win for p1
-            } else {
-                return advantageOrWinStrings[3]; // win for p2
-            }
+        if (differenceInScore == 1) {
+            return advantageOrWinStrings[0]; //advanatage p1
+        } else if (differenceInScore == -1) {
+            return advantageOrWinStrings[1]; // advantage p2
+        } else if (differenceInScore >= 2) {
+            return advantageOrWinStrings[2]; // win for p1
+        } else {
+            return advantageOrWinStrings[3]; // win for p2
+        }
     }
-    
+
     private String getLowerScoresAsString() {
         return scoreStrings[gameScoreP1] + "-" + scoreStrings[gameScoreP2];
     }
-    
+
     public String getScore() {
         if (gameScoreP1 == gameScoreP2) {
-            return getEvenScoreAsString();   
+            return getEvenScoreAsString();
         } else if (gameScoreP1 >= advantageThreshold || gameScoreP2 >= advantageThreshold) {
             return getAdvantageOrWinAsString();
         } else {
