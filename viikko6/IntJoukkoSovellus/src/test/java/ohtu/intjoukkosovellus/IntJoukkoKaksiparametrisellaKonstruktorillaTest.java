@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 public class IntJoukkoKaksiparametrisellaKonstruktorillaTest extends IntJoukkoTest {
     
     @Before
+    @Override
     public void setUp() {
         joukko = new IntJoukko(4, 2);
         joukko.lisaa(10);
